@@ -5,10 +5,13 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Mar 28 17:19:35 2017 MESRATI Nada
-** Last update Tue Mar 28 17:33:27 2017 MESRATI Nada
+** Last update Wed Mar 29 16:23:58 2017 MESRATI Nada
 */
 #include "client.h"
 
+/** 
+ ** Cette fonction sert à se connecter au serveur avec la commande /server [address]:[port]
+ **/
 int			get_cmd()
 {
   char			buff[BUFF_SIZE];

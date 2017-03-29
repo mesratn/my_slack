@@ -5,11 +5,17 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Mar 28 17:19:19 2017 MESRATI Nada
-** Last update Tue Mar 28 17:19:20 2017 MESRATI Nada
+** Last update Wed Mar 29 16:39:54 2017 MESRATI Nada
 */
 
 #include		"client.h"
 
+/**
+ ** Prend la commande tapé par le client et se connecte au serveur avec le prototype TCP
+ ** en créant une socket.
+ ** Renvoie la socket une fois connecter
+ ** pour la fonction connect on est obligé de cast sockaddr_in en sockadd
+ **/
 int			my_connect(char **cmd)
 {
   struct protoent	*pe;

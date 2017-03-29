@@ -5,8 +5,15 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Mar 28 16:57:08 2017 MESRATI Nada
-** Last update Tue Mar 28 17:29:22 2017 MESRATI Nada
+** Last update Wed Mar 29 16:02:42 2017 MESRATI Nada
 */
+
+
+/**
+ ** Met à 0 (octets contenant « \0 ») les n premiers octets du bloc pointé par s.
+ ** La fonction bzero existe dans <strings.h> mais je ne pense pas qu'on y a droit.
+ **/
+
 void	my_bzero(void *s1, int n)
 {
   char *c;
