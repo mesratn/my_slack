@@ -11,6 +11,8 @@
 
 /** 
  ** Cette fonction sert à se connecter au serveur avec la commande /server [address]:[port]
+ ** Elle fait la vérification de la commande et si le format est bon fait appel à my_connect()
+ ** Il faut voir le my_str_to_wordtab dans la lib, il prend en deuxième argument le caractère de séparation
  **/
 int			get_cmd()
 {

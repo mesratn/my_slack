@@ -9,6 +9,10 @@
 */
 #include "client.h"
 
+
+/*
+** Cette fonction sert à free tous les éléments d'un tableau
+*/
 void	freetab(char **tab)
 {
   int	i;

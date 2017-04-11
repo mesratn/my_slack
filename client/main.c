@@ -50,6 +50,11 @@ int		get_msg(int s)
     }
 }
 
+/*
+** Cette fonction fait la boucle du client et selon si c'est une reception du message ou son envoi
+** fait appel respectivement aux fonction get_msg et send_input
+*/
+
 int		my_client(int s)
 {
   fd_set	fd_read;

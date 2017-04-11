@@ -13,7 +13,7 @@
 /**
  ** Prend la commande tapé par le client et se connecte au serveur avec le prototype TCP
  ** en créant une socket.
- ** Renvoie la socket une fois connecter
+ ** Renvoie la socket une fois connecté
  ** pour la fonction connect on est obligé de cast sockaddr_in en sockadd
  **/
 int			my_connect(char **cmd)

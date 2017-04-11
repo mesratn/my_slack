@@ -8,6 +8,10 @@
 ** Last update Tue Mar 28 17:03:02 2017 MESRATI Nada
 */
 
+/*
+** Cette fonction sert à avoir la longeur d'un tableau
+*/
+
 int tablen(char **tab)
 {
   int	i;
