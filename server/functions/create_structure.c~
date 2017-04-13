@@ -1,0 +1,24 @@
+/*
+** create_structure.c for my_slack in /home/naej/ETNA/my_slack/server/functions
+** 
+** Made by BILLAUD Jean
+** Login   <billau_j@etna-alternance.net>
+** 
+** Started on  Wed Apr 12 21:24:35 2017 BILLAUD Jean
+** Last update Wed Apr 12 21:30:43 2017 BILLAUD Jean
+*/
+
+t_env	*create_env()
+{
+  t_env	*env;
+
+  env = NULL;
+  env = malloc(sizeof(*env));
+  if (env == NULL)
+    {
+      log(ERROR, "L'environnement n'a pu être créé\n");
+    }
+  env->channel = NULL;
+  log(INFO, "L'environnement a bien été créé");
+  return (env);
+}

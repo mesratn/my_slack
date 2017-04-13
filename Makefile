@@ -12,18 +12,32 @@ CFLAGS =	-Wall -Werror -W -Wextra
 
 NAME_CLIENT =	client_bin
 
+NAME_SERVER =   server_bin
+
 SRCS_CLIENT =	$(wildcard client/*.c)
+
+SRCS_SERVER =   $(wildcard server/functions/*.c)
 
 OBJS_CLIENT =	$(SRCS_CLIENT:%.c=%.o)
 
+OBJS_SERVER =   $(SRCS_SERVER:%.c=%.o)
+
 all:		$(NAME_CLIENT)
+		$(NAME_SERVER)
 
 client:		$(NAME_CLIENT)
+
+server:		$(NAME_SERVER)
 
 $(NAME_CLIENT):	$(OBJS_CLIENT)
 		@$(LIB)
 		@echo "-> Compilation client_bin ..."
 		$(CC) $(OBJS_CLIENT) -L libmy/ -lmy $(CFLAGS) -o $(NAME_CLIENT) $(LDFLAGS)
+
+$(NAME_SERVER): $(OBJS_SERVER)
+		@$(LIB)
+		@echo "-> Compilation server_bin ..."
+		$(CC) $(OBJS_SERVER) -L libmy/ -lmy $(CFLAGS) -o $(NAME_SERVER) $(LDFLAGS)
 
 clean:		
 		@echo "-> clean client..."
