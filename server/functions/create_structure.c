@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:24:35 2017 BILLAUD Jean
-** Last update Fri Apr 14 17:10:08 2017 BILLAUD Jean
+** Last update Fri Apr 14 17:30:58 2017 BILLAUD Jean
 */
 
 #include 	<stdlib.h>
@@ -61,7 +61,7 @@ t_channel	*create_channel(char *cli_name)
   channel = malloc(sizeof (*channel));
   if (channel == NULL)
     {
-      my_putstr("ERROR; Le channel n'a pu être créé\n");
+      my_putstr("ERROR: Le channel n'a pu être créé\n");
       return (0);
     }
   channel->name = my_strdup(cli_name);
