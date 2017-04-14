@@ -5,17 +5,17 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:24:35 2017 BILLAUD Jean
-** Last update Fri Apr 14 08:58:31 2017 BILLAUD Jean
+** Last update Fri Apr 14 16:37:00 2017 BILLAUD Jean
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <netdb.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include "../headers/structures.h"
-#include "../headers/server.h"
+#include        "../headers/structures.h"
+#include        "../headers/server.h"
+#include 	<stdlib.h>
+#include 	<stdio.h>
+#include 	<unistd.h>
+#include 	<netdb.h>
+#include 	<sys/socket.h>
+#include 	<arpa/inet.h>
 
 t_env	*create_env()
 {

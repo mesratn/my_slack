@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Thu Apr 13 16:21:13 2017 BILLAUD Jean
-** Last update Fri Apr 14 09:00:44 2017 BILLAUD Jean
+** Last update Fri Apr 14 16:21:55 2017 BILLAUD Jean
 */
 
 #ifndef		__SERVER_H_
@@ -33,5 +33,13 @@ char    *my_strstr(char *str, char* to_find);
 int   	count_word(char *str, char separe);
 char    **my_str_to_wordtab(char *str, char separe);
 void    my_swap(int *a, int *b);
+
+/*
+** Construct
+*/
+
+t_env		*create_env();
+t_user		*create_user(char *login, struct sockaddr_in *cli_addr);
+t_channel	*create_channel(char *cli_name);
 
 #endif

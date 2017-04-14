@@ -5,11 +5,11 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:07:53 2017 BILLAUD Jean
-** Last update Fri Apr 14 08:59:25 2017 BILLAUD Jean
+** Last update Fri Apr 14 16:38:20 2017 BILLAUD Jean
 */
 
-#ifndef __SERVER_H_
-#define __SERVER_H_
+#ifndef __STRUCTURES_H_
+#define __STRUCTURES_H_
 
 typedef struct		s_user
 {
