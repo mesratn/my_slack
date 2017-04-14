@@ -5,11 +5,12 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Thu Apr 13 16:21:13 2017 BILLAUD Jean
-** Last update Fri Apr 14 16:21:55 2017 BILLAUD Jean
+** Last update Fri Apr 14 17:16:45 2017 BILLAUD Jean
 */
 
 #ifndef		__SERVER_H_
 #define		__SERVER_H_
+
 
 /*
 ** Libmy
@@ -42,4 +43,10 @@ t_env		*create_env();
 t_user		*create_user(char *login, struct sockaddr_in *cli_addr);
 t_channel	*create_channel(char *cli_name);
 
+
+/*
+** add to construct
+*/
+
+void		add_channel_to_env(void *strct1, void *strct2);
 #endif
