@@ -5,17 +5,15 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Thu Apr 13 16:21:13 2017 BILLAUD Jean
-** Last update Thu Apr 13 17:28:24 2017 BILLAUD Jean
+** Last update Fri Apr 14 09:00:44 2017 BILLAUD Jean
 */
-ff
 
 #ifndef		__SERVER_H_
 #define		__SERVER_H_
 
 /*
 ** Libmy
- */
-
+*/
 void	my_putchar(char c);
 void	my_putstr(char *c);
 void	my_put_nbr(int n);
@@ -28,11 +26,12 @@ char	*my_strcat(char *str1, char *str2);
 int	my_strcmp(char *s1, char *s2);
 char	*my_strcpy(char *dest, char *src);
 char	*my_strdup(char *str);
-char	*my_strncat(chat *str1, char *str2, int n);
+char	*my_strncat(char *str1, char *str2, int n);
 int     my_strncmp(char *s1, char *s2, int n);
 char    *my_strncpy(char *dest, char *src, int n);
 char    *my_strstr(char *str, char* to_find);
 int   	count_word(char *str, char separe);
 char    **my_str_to_wordtab(char *str, char separe);
 void    my_swap(int *a, int *b);
+
 #endif

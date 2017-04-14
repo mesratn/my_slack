@@ -5,10 +5,13 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:23:51 2017 BILLAUD Jean
-** Last update Wed Apr 12 21:24:19 2017 BILLAUD Jean
+** Last update Fri Apr 14 08:12:09 2017 BILLAUD Jean
 */
 
-int	main(int argc, char **argv)
+#include "../headers/server.h"
+
+int	main()
 {
+  my_putstr("OK");
   return (0);
 }

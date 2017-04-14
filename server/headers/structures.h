@@ -5,27 +5,29 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:07:53 2017 BILLAUD Jean
-** Last update Wed Apr 12 21:40:18 2017 BILLAUD Jean
+** Last update Fri Apr 14 08:59:25 2017 BILLAUD Jean
 */
 
-#ifndef _SERVER_H_
-#define _SERVER_H_
+#ifndef __SERVER_H_
+#define __SERVER_H_
 
-typedef struct	s_env
+typedef struct		s_user
 {
-  t_channel	*channel;
-}		t_env;
+  char			*login;
+  struct sockaddr_in	*cli_addr;
+}			t_user;
 
-typedef struct	s_user
+typedef struct 		s_channel
 {
-  char		*login;
-  sockaddr_in	*cli_addr;
-  t_user	*next;
-  t_user	*prev;
-}		t_user;
+  char			*name;
+  t_user		*first;
+  t_user		*last;
+}			t_channel;
 
-typedef struct 	s_channel
+typedef struct		s_env
 {
-  char		*name;
-  t_user	*user;
-}		t_channel;
+  t_channel		*first;
+  t_channel		*last;
+}			t_env;
+
+#endif
