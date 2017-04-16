@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:24:35 2017 BILLAUD Jean
-** Last update Fri Apr 14 17:30:58 2017 BILLAUD Jean
+** Last update Sun Apr 16 10:51:49 2017 BILLAUD Jean
 */
 
 #include 	<stdlib.h>
@@ -69,6 +69,6 @@ t_channel	*create_channel(char *cli_name)
   channel->last = NULL;
   channel->next = NULL;
   channel->prev = NULL;
-  my_pustr("INFO: Le channel a bien été créé\n");
+  my_putstr("INFO: Le channel a bien été créé\n");
   return (channel);
 }

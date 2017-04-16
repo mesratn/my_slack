@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Thu Apr 13 16:21:13 2017 BILLAUD Jean
-** Last update Fri Apr 14 17:16:45 2017 BILLAUD Jean
+** Last update Sun Apr 16 10:48:53 2017 BILLAUD Jean
 */
 
 #ifndef		__SERVER_H_
@@ -48,5 +48,5 @@ t_channel	*create_channel(char *cli_name);
 ** add to construct
 */
 
-void		add_channel_to_env(void *strct1, void *strct2);
+void		add_channel_to_env(t_env *env, t_channel *chan);
 #endif

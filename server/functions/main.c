@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:23:51 2017 BILLAUD Jean
-** Last update Fri Apr 14 17:12:32 2017 BILLAUD Jean
+** Last update Sun Apr 16 10:53:00 2017 BILLAUD Jean
 */
 
 #include 	<stdlib.h>
@@ -19,12 +19,13 @@
 
 int	main()
 {
-  t_env	env;
-  t_channel channel;
+  t_env		*env;
+  t_channel 	*channel;
   
   env = create_env();
   channel = create_channel("pipi");
-  
+  add_channel_to_env(env, channel);
+  my_putstr(env->first->name);
   my_putstr("OK");
   return (0);
 }
