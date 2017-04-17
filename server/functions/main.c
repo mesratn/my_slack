@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:23:51 2017 BILLAUD Jean
-** Last update Mon Apr 17 11:00:11 2017 BILLAUD Jean
+** Last update Mon Apr 17 12:53:58 2017 BILLAUD Jean
 */
 
 #include 	<stdlib.h>
@@ -28,7 +28,10 @@ int		main()
   t_channel 	*channel;
 
   listener = init_server();
+  if (listener != 3)
+    return (0);
   my_put_nbr(listener);
+  my_serv(listener);
   env = create_env();
   channel = create_channel("pipi");
   add_channel_to_env(env, channel);
