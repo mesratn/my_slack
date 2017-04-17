@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sun Apr 16 13:21:13 2017 BILLAUD Jean
-** Last update Sun Apr 16 13:49:54 2017 BILLAUD Jean
+** Last update Mon Apr 17 10:59:28 2017 BILLAUD Jean
 */
 
 #include 		<stdlib.h>
@@ -17,9 +17,12 @@
 #include 		<sys/socket.h>
 #include 		<arpa/inet.h>
 #include		<sys/select.h>
-#include		<sys/type.h>
+#include		<sys/types.h>
 #include        	"../headers/structures.h"
 #include        	"../headers/server.h"
+
+#define PORT 4242
+#define BACKLOG 512
 
 int			init_server()
 {

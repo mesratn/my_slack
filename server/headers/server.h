@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Thu Apr 13 16:21:13 2017 BILLAUD Jean
-** Last update Sun Apr 16 13:03:14 2017 BILLAUD Jean
+** Last update Sun Apr 16 14:05:08 2017 BILLAUD Jean
 */
 
 #ifndef		__SERVER_H_
@@ -66,4 +66,10 @@ void		remove_user_from_chan(t_channel *channel, t_user *user, int quit);
 void		free_user(t_user *user);
 void		free_channel(t_channel *channel);
 void		free_env(t_env *env);
+
+/*
+** Server functions
+*/
+
+int		init_server();
 #endif
