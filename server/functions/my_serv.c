@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Mon Apr 17 11:58:18 2017 BILLAUD Jean
-** Last update Tue Apr 18 17:27:52 2017 BILLAUD Jean
+** Last update Tue Apr 18 18:04:59 2017 BILLAUD Jean
 */
 
 #include 	<stdlib.h>
@@ -21,6 +21,9 @@
 #include        "../headers/structures.h"
 #include        "../headers/server.h"
 
+/*
+** Boucle principale du server
+*/
 void		my_serv(int listener, t_env *env)
 {
   while(42)
@@ -29,6 +32,10 @@ void		my_serv(int listener, t_env *env)
     }
 }
 
+/*
+** crée le file descriptor du cli et annonce sa connexion aux
+** autres du channel
+*/
 void			accept_cli(int listener, t_env *env)
 {
   struct sockaddr_in	cli_addr;

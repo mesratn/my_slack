@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sun Apr 16 11:21:09 2017 BILLAUD Jean
-** Last update Mon Apr 17 11:12:38 2017 BILLAUD Jean
+** Last update Tue Apr 18 18:03:45 2017 BILLAUD Jean
 */
 
 #include 	<stdlib.h>
@@ -17,6 +17,11 @@
 #include        "../headers/structures.h"
 #include        "../headers/server.h"
 
+/*
+** Les deux fonctions permettent de:
+** - add le user à un autre chan
+** - le supprimer de l'ancien chan
+*/
 void		change_user_channel(t_channel *chan1, t_channel *chan2, t_user *user)
 {
   remove_user_from_chan(chan1, user, 0);

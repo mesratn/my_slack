@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sun Apr 16 13:21:13 2017 BILLAUD Jean
-** Last update Tue Apr 18 17:22:18 2017 BILLAUD Jean
+** Last update Tue Apr 18 18:03:04 2017 BILLAUD Jean
 */
 
 #include 		<stdlib.h>
@@ -21,9 +21,18 @@
 #include        	"../headers/structures.h"
 #include        	"../headers/server.h"
 
+/*
+** On définit le port sur lequel on doit se connecter
+** Le backlog représente la taille maximum de client en
+** attente dans la file de connexion
+*/
 #define PORT 4242
 #define BACKLOG 512
 
+/*
+** On crée la socket pour le server
+** On retourne son file descriptor
+*/
 int			init_server()
 {
   int			listener;
@@ -53,6 +62,10 @@ int			init_server()
   return (listener);
 }
 
+/*
+** On initialise la struc env et le chan
+** général
+*/
 t_env			*init_env()
 {
   t_env			*env;
