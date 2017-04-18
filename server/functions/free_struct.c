@@ -5,7 +5,6 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sun Apr 16 11:11:46 2017 BILLAUD Jean
-** Last update Mon Apr 17 10:57:24 2017 BILLAUD Jean
 */
 
 #include <stdio.h>

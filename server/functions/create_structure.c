@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:24:35 2017 BILLAUD Jean
-** Last update Sun Apr 16 10:51:49 2017 BILLAUD Jean
+** Last update Tue Apr 18 17:59:54 2017 BILLAUD Jean
 */
 
 #include 	<stdlib.h>
@@ -17,6 +17,10 @@
 #include        "../headers/structures.h"
 #include        "../headers/server.h"
 
+/*
+** On créé la structure envorinnement qui est un simple container permettant 
+** de contenir tous les channels
+*/
 t_env		*create_env()
 {
   t_env		*env;
@@ -34,7 +38,13 @@ t_env		*create_env()
   return (env);
 }
 
-t_user		*create_user(char *login, struct sockaddr_in *cli_addr)
+/*
+** Le user contient deux informations: son login permettant
+** de le retrouver avec un get_user_by_name()
+** et le cli_addr est le file descriptor qui permet au serv
+** de communiquer avec la bonne socket;
+*/
+t_user		*create_user(char *login, int cli_addr)
 {
   t_user	*user;
 
@@ -53,6 +63,10 @@ t_user		*create_user(char *login, struct sockaddr_in *cli_addr)
   return (user);
 }
 
+/*
+** creation du channel qui contient les structs des
+** users présents sur le serv.
+*/
 t_channel	*create_channel(char *cli_name)
 {
   t_channel	*channel;

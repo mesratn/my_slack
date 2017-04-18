@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:07:53 2017 BILLAUD Jean
-** Last update Mon Apr 17 15:12:28 2017 BILLAUD Jean
+** Last update Tue Apr 18 17:00:28 2017 BILLAUD Jean
 */
 
 #ifndef __STRUCTURES_H_
@@ -18,7 +18,7 @@ typedef struct  s_env		t_env;
 struct				s_user
 {
   char				*login;
-  int				*cli_addr;
+  int				cli_addr;
   t_user			*next;
   t_user			*prev;
 };
