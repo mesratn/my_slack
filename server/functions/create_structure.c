@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 12 21:24:35 2017 BILLAUD Jean
-** Last update Sun Apr 16 10:51:49 2017 BILLAUD Jean
+** Last update Tue Apr 18 16:55:37 2017 BILLAUD Jean
 */
 
 #include 	<stdlib.h>
@@ -34,7 +34,7 @@ t_env		*create_env()
   return (env);
 }
 
-t_user		*create_user(char *login, struct sockaddr_in *cli_addr)
+t_user		*create_user(char *login, int cli_addr)
 {
   t_user	*user;
 

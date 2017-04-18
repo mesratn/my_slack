@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sun Apr 16 13:21:13 2017 BILLAUD Jean
-** Last update Mon Apr 17 10:59:28 2017 BILLAUD Jean
+** Last update Tue Apr 18 17:22:18 2017 BILLAUD Jean
 */
 
 #include 		<stdlib.h>
@@ -51,4 +51,15 @@ int			init_server()
       return (EXIT_FAILURE);
     }
   return (listener);
+}
+
+t_env			*init_env()
+{
+  t_env			*env;
+  t_channel		*chan;
+
+  env = create_env();
+  chan = create_channel("general");
+  add_channel_to_env(env, chan);
+  return (env);
 }

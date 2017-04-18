@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Thu Apr 13 16:21:13 2017 BILLAUD Jean
-** Last update Mon Apr 17 12:49:26 2017 BILLAUD Jean
+** Last update Tue Apr 18 17:27:24 2017 BILLAUD Jean
 */
 
 #ifndef		__SERVER_H_
@@ -40,7 +40,7 @@ void    my_swap(int *a, int *b);
 */
 
 t_env		*create_env();
-t_user		*create_user(char *login, struct sockaddr_in *cli_addr);
+t_user		*create_user(char *login, int cli_addr);
 t_channel	*create_channel(char *cli_name);
 
 
@@ -72,6 +72,8 @@ void		free_env(t_env *env);
 */
 
 int		init_server();
-void		my_serv(int listener);
-void		accept_cli(int listener);
+t_env		*init_env();
+void		my_serv(int listener, t_env *env);
+void		accept_cli(int listener, t_env *env);
+void		notify_new_user(t_channel *chan);
 #endif
