@@ -39,14 +39,24 @@ $(NAME_SERVER): $(OBJS_SERVER)
 		@echo "-> Compilation server_bin ..."
 		$(CC) $(OBJS_SERVER) -L libmy/ -lmy $(CFLAGS) -o $(NAME_SERVER) $(LDFLAGS)
 
-clean:		
+clean_client:		
 		@echo "-> clean client..."
 		@$(RM) $(OBJS_CLIENT)
 		@$(LIB_CLEAN)
 
-fclean:		clean
+fclean_client:		clean_client
 		@echo "-> fclean client..."
 		@$(RM) $(NAME_CLIENT)
+		@$(LIB_FCLEAN)
+
+clean_server:
+		@echo "-> clean server..."
+		@$(RM) $(OBJS_SERVER)
+		@$(LIB_CLEAN)
+
+fclean_server: 		clean_server
+		@echo "-> fclean server..."
+		@$(RM) $(NAME_SERVER)
 		@$(LIB_FCLEAN)
 
 re:		fclean all clean
