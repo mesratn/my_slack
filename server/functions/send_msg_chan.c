@@ -32,7 +32,7 @@ t_channel		*get_current_chan(t_channel *list, int fd)
       user = tmp->first;
       while (user)
 	{
-	  if (user->fd == fd)
+	  if (user->cli_addr == fd)
 	    return (tmp);
 	  user = user->next;
 	}
@@ -76,12 +76,12 @@ void		send_msg_in_chan(t_env *e, int fd, char * buf)
     my_putstr_fd(fd, "send msg: error join a chan before.\n");
   while (user)
     {
-      if (FD_ISSET(user->fd, &e->fd_write) && fd != user->fd)
+      if (FD_ISSET(user->cli_addr, &e->fd_write) && fd != user->cli_addr)
 	{
 	  if (current_user != NULL && current_user->login)
-    	writing(user->fd, current_user->login)
+    	writing(user->cli_addr, current_user->login)
 	  else if (current_user != NULL)
-    	writing(user->fd, "unknown");
+    	writing(user->cli_addr, "unknown");
 	}
       user = user->next;
     }

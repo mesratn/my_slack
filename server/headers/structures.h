@@ -19,7 +19,6 @@ struct				s_user
 {
   char				*login;
   int				cli_addr;
-  int       fd;
   t_user			*next;
   t_user			*prev;
 };
