@@ -19,6 +19,7 @@ struct				s_user
 {
   char				*login;
   int				cli_addr;
+  int       fd;
   t_user			*next;
   t_user			*prev;
 };
@@ -36,6 +37,8 @@ struct				s_env
 {
   t_channel			*first;
   t_channel			*last;
+  fd_set      fd_write;
+  fd_set      fd_read;
 };
 
 #endif

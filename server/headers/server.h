@@ -11,6 +11,8 @@
 #ifndef		__SERVER_H_
 #define		__SERVER_H_
 
+# define	BUFF_SIZE	3000
+
 
 /*
 ** Libmy
