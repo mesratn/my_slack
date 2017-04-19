@@ -48,14 +48,14 @@ t_user	*get_current_user(t_user *list, int fd)
   tmp = list;
   while (tmp)
     {
-      if (tmp->fd == fd)
+      if (tmp->cli_addr == fd)
 	return (tmp);
       tmp = tmp->next;
     }
   return (NULL);
 }
 
-void writing(int fd, char *str)
+void writing(int fd, char *str, char *buf)
 {
     my_putstr_fd(fd, str);
 	my_putstr_fd(fd, ": ");
@@ -79,9 +79,9 @@ void		send_msg_in_chan(t_env *e, int fd, char * buf)
       if (FD_ISSET(user->cli_addr, &e->fd_write) && fd != user->cli_addr)
 	{
 	  if (current_user != NULL && current_user->login)
-    	writing(user->cli_addr, current_user->login)
+    	writing(user->cli_addr, current_user->login, buf);
 	  else if (current_user != NULL)
-    	writing(user->cli_addr, "unknown");
+    	writing(user->cli_addr, "unknown", buf);
 	}
       user = user->next;
     }

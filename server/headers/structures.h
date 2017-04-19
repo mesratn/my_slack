@@ -38,6 +38,7 @@ struct				s_env
   t_channel			*last;
   fd_set      fd_write;
   fd_set      fd_read;
+  int       fd_max;
 };
 
 #endif

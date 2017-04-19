@@ -13,7 +13,6 @@
 
 # define	BUFF_SIZE	3000
 
-
 /*
 ** Libmy
 */
@@ -76,6 +75,9 @@ void		free_env(t_env *env);
 int		init_server();
 t_env		*init_env();
 void		my_serv(int listener, t_env *env);
-void		accept_cli(int listener, t_env *env);
+int		accept_cli(int listener, t_env *env);
 void		notify_new_user(t_channel *chan);
+void		send_msg_in_chan(t_env *e, int fd, char * buf);
+void	my_putstr_fd(int fd, char *str);
+void		client_read(t_env *e, int fd);
 #endif

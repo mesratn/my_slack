@@ -21,6 +21,23 @@
 #include        	"../headers/structures.h"
 #include        	"../headers/server.h"
 
+int 	get_cmd(t_env *e, char *buf, int fd)
+{
+	(void)e;
+	(void)buf;
+	(void)fd;
+	my_putstr("get cmd");
+	return (1);
+}
+
+int my_disconnect(t_env *e, int fd)
+{
+	(void)e;
+	(void)fd;
+	my_putstr("disconnect");
+	return (0);
+}
+
 void		client_read(t_env *e, int fd)
 {
   int		r;
@@ -31,7 +48,7 @@ void		client_read(t_env *e, int fd)
     {
       buf[r - 1] = '\0';
       if (!get_cmd(e, buf, fd))
-	send_msg_in_chan(e, fd, buf);
+		send_msg_in_chan(e, fd, buf);
     }
   else
     my_disconnect(e, fd);
