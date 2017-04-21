@@ -16,7 +16,7 @@ NAME_SERVER =   server_bin
 
 SRCS_CLIENT =	$(wildcard client/*.c)
 
-SRCS_SERVER =   $(wildcard server/functions/*.c)
+SRCS_SERVER =   $(wildcard server_nada/*.c)
 
 OBJS_CLIENT =	$(SRCS_CLIENT:%.c=%.o)
 
