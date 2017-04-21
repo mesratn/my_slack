@@ -1,11 +1,11 @@
 /*
 ** my_server.c for my_slack in /home/nada/Documents/ETNA/devc/slack/my_slack/server_nada
-** 
+**
 ** Made by MESRATI Nada
 ** Login   <mesrat_n@etna-alternance.net>
-** 
+**
 ** Started on  Fri Apr 21 13:35:57 2017 MESRATI Nada
-** Last update Fri Apr 21 14:39:04 2017 MESRATI Nada
+** Last update Fri Apr 21 21:40:44 2017 BILLAUD Jean
 */
 
 #include "server.h"
@@ -28,7 +28,7 @@ int			my_server(t_env *e)
 	}
       tmp = tmp->next;
     }
-  if (select(e->fd_max + 1, 
+  if (select(e->fd_max + 1,
 	     &e->fd_read, &e->fd_write, NULL, NULL) == -1)
     return (0);
   tmp = e->list;

@@ -1,11 +1,11 @@
 /*
 ** add_client.c for my_slack in /home/nada/Documents/ETNA/devc/slack/my_slack/server_nada
-** 
+**
 ** Made by MESRATI Nada
 ** Login   <mesrat_n@etna-alternance.net>
-** 
+**
 ** Started on  Fri Apr 21 13:33:39 2017 MESRATI Nada
-** Last update Fri Apr 21 14:22:11 2017 MESRATI Nada
+** Last update Fri Apr 21 22:16:03 2017 BILLAUD Jean
 */
 
 #include "server.h"
@@ -16,7 +16,7 @@ void			server_read(t_env *e, int s)
   struct sockaddr_in	client_sin;
   socklen_t		*client_sin_len;
 
-  cs = accept(s, (struct sockaddr *)&client_sin, 
+  cs = accept(s, (struct sockaddr *)&client_sin,
 	      (socklen_t *)&client_sin_len);
   if (cs == -1)
     return ;
@@ -45,6 +45,7 @@ void			add_client(t_env *e)
   if (listen(s, 42) == -1)
     return ;
   add_elem_fd(&e->list, s, FD_SERVER, server_read);
+  my_put_nbr(e->list->type);
   if ((name = malloc(sizeof(char) * 2)) == NULL)
     return ;
   while (pos <= 9)

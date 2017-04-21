@@ -26,13 +26,14 @@ void		add_elem_fd(t_user **list, int fd, int type, vfptr fptr_read)
     return ;
   if ((new = malloc(sizeof(*new))) == NULL)
     return ;
+  new->login = NULL;
   new->fd = fd;
   new->type = type;
   new->fptr_read = fptr_read;
   new->login = NULL;
   new->next = NULL;
   if (*list == NULL)
-    *list = new;
+      *list = new;
   else
     {
       tmp = *list;
@@ -63,5 +64,4 @@ void		add_elem_chan(t_chan **list, char *name)
 	tmp = tmp->next;
       tmp->next = new;
     }
-
 }

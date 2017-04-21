@@ -52,6 +52,7 @@ typedef struct			s_cmd
 }				t_cmd;
 
 void		add_client(t_env *e);
+t_env		*create_env(int p);
 int		check_fd(t_user **list, int fd);
 void		add_elem_fd(t_user **list, int fd, int type, vfptr fptr_read);
 void		add_elem_chan(t_chan **list, char *name);
@@ -79,6 +80,7 @@ void		show_all_user(t_chan *list);
 void		my_putstr(char *);
 void		my_putstr_fd(int fd, char *str);
 void		my_putnbr_fd(int, int);
+void		my_put_nbr(int);
 char		*my_strdup(char *);
 char		**my_str_to_wordtab(char *, char);
 int		my_strcmp(char *, char *);
