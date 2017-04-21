@@ -27,7 +27,7 @@ int 	get_cmd(t_env *e, char *buf, int fd)
 	(void)buf;
 	(void)fd;
 	my_putstr("get cmd");
-	return (1);
+	return (0);
 }
 
 int my_disconnect(t_env *e, int fd)
@@ -48,7 +48,10 @@ void		client_read(t_env *e, int fd)
     {
       buf[r - 1] = '\0';
       if (!get_cmd(e, buf, fd))
+      {
+		my_putstr("IF\n");      	
 		send_msg_in_chan(e, fd, buf);
+      }
     }
   else
     my_disconnect(e, fd);
