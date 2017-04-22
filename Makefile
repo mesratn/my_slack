@@ -22,33 +22,30 @@ SRCS_CLIENT =	client/bzero.c		\
 		client/my_client.c	\
 		client/tablen.c
 
-SRCS_SERVER =   server/main.c			\
-		server/add_client.c		\
-		server/add_elem.c		\
-		server/change_chan.c		\
-		server/check_user_in_chan.c	\
-		server/client_read.c		\
-		server/create_env.c		\
-		server/create_node.c		\
-		server/get_cmd.c		\
-		server/get_current.c		\
-		server/list.c			\
-		server/move_node.c		\
-		server/my_disconnect.c		\
-		server/my_join.c		\
-		server/my_putnbr_fd.c		\
-		server/my_putstr_fd.c		\
-		server/my_server.c		\
-		server/send_msg_in_chan.c	\
-		server/show_all_users.c		\
-		server/tablen.c			\
+SRCS_SERVER =   server/functions/main.c			\
+		server/functions/add_client.c		\
+		server/functions/add_elem.c		\
+		server/functions/change_chan.c		\
+		server/functions/check_user_in_chan.c	\
+		server/functions/client_read.c		\
+		server/functions/create_env.c		\
+		server/functions/create_node.c		\
+		server/functions/get_cmd.c		\
+		server/functions/get_current.c		\
+		server/functions/list.c			\
+		server/functions/move_node.c		\
+		server/functions/my_disconnect.c	\
+		server/functions/my_join.c		\
+		server/functions/my_putnbr_fd.c		\
+		server/functions/my_putstr_fd.c		\
+		server/functions/my_server.c		\
+		server/functions/send_msg_in_chan.c	\
+		server/functions/show_all_users.c	\
+		server/functions/tablen.c		\
 
 OBJS_CLIENT =	$(SRCS_CLIENT:%.c=%.o)
 
 OBJS_SERVER =   $(SRCS_SERVER:%.c=%.o)
-
-all:		$(NAME_CLIENT)
-		$(NAME_SERVER)
 
 client:		$(NAME_CLIENT)
 
@@ -84,10 +81,10 @@ fclean_server: 		clean_server
 		@$(RM) $(NAME_SERVER)
 		@$(LIB_FCLEAN)
 
-re:		fclean all clean
+re:		fclean clean
 
 re_client:	fclean_client client clean_client
 
 re_server:	fclean_server server clean_server
 
-.PHONY:		all clean fclean re clean_client clean_server fclean_client fclean_server re_client re_server
+.PHONY:		clean fclean re clean_client clean_server fclean_client fclean_server re_client re_server
