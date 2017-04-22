@@ -5,10 +5,10 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Wed Apr 19 20:51:05 2017 MESRATI Nada
-** Last update Wed Apr 19 21:06:32 2017 MESRATI Nada
+** Last update Fri Apr 21 14:26:58 2017 MESRATI Nada
 */
 
-#include <unistd.h>
+#include "server.h"
 
 void	my_putstr_fd(int fd, char *str)
 {

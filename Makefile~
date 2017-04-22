@@ -34,7 +34,7 @@ SRCS_SERVER =   server/main.c			\
 		server/get_current.c		\
 		server/list.c			\
 		server/move_node.c		\
-		server/my_disconnect.c		\
+		server/my_disconnect		\
 		server/my_join.c		\
 		server/my_putnbr_fd.c		\
 		server/my_putstr_fd.c		\
