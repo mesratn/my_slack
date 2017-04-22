@@ -42,6 +42,8 @@ SRCS_SERVER =   server/functions/main.c			\
 		server/functions/send_msg_in_chan.c	\
 		server/functions/show_all_users.c	\
 		server/functions/tablen.c		\
+		server/functions/free_struct.c		\
+		server/functions/free_chain.c
 
 OBJS_CLIENT =	$(SRCS_CLIENT:%.c=%.o)
 

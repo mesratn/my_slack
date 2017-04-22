@@ -81,7 +81,7 @@ fclean_server: 		clean_server
 		@$(RM) $(NAME_SERVER)
 		@$(LIB_FCLEAN)
 
-re:		fclean all clean
+re:		fclean clean
 
 re_client:	fclean_client client clean_client
 

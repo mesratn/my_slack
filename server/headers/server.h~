@@ -108,4 +108,12 @@ int		my_strlen(char *);
 int		tablen(char **);
 int		my_getnbr(char *);
 
+void		free_user(t_user *u);
+void		free_node(t_node *n);
+void		free_chan(t_chan *c);
+void		free_env(t_env *e);
+void		free_all_users(t_env *e);
+void		free_all_chan(t_env *e);
+void		free_all_node(t_chan *c);
+
 #endif

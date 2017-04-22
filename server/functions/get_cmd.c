@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:36 2017 BILLAUD Jean
-** Last update Sat Apr 22 19:07:26 2017 BILLAUD Jean
+** Last update Sat Apr 22 22:12:37 2017 BILLAUD Jean
 */
 
 #include 	"../headers/server.h"
@@ -54,7 +54,7 @@ int		my_exit(t_env *e, char **cmd, int fd)
     {
       while (tmp)
 	{
-	  disconnect_chan(tmp->first->user, tmp, fd);
+	  disconnect_chan(tmp->first, tmp, fd);
 	  tmp = tmp->next;
 	}
     }
@@ -65,23 +65,24 @@ int		my_exit(t_env *e, char **cmd, int fd)
   return (0);
 }
 
-int		disconnect_chan(t_user *list, t_chan *c, int fd)
+int		disconnect_chan(t_node *n, t_chan *c, int fd)
 {
-  t_user	*user;
+  t_node	*tmp;
 
-  user = list;
-  while (user)
+  tmp = n;
+  while (n)
     {
-      if (user->fd == fd && user->type == FD_CLIENT)
+      if (tmp->user->fd == fd && tmp->user->type == FD_CLIENT)
 	{
-	  user->type = FD_FREE;
-	  user->login = NULL;
+	  tmp->user->state = WAITING;
+	  move_node_from_chan(c, tmp);
+	  free_node(tmp);
 	  my_putstr_fd(fd, "You leave the chan ");
 	  my_putstr_fd(fd, c->name);
 	  my_putstr_fd(fd, " \n");
 	  return (0);
 	}
-      user = user->next;
+      n = n->next;
     }
   return (0);
 }
@@ -98,7 +99,7 @@ int		my_quit(t_env *e, char **cmd, int fd)
     }
   while (tmp)
     {
-      disconnect_chan(tmp->first->user, tmp, fd);
+      disconnect_chan(tmp->first, tmp, fd);
       tmp = tmp->next;
     }
   return (0);

@@ -72,7 +72,7 @@ int		check_user_in_chan(t_node *node, int fd);
 void		client_read(t_env *e, int fd);
 int		get_cmd(t_env *e, char *buff, int fd);
 int		my_exit(t_env *e, char **cmd, int fd);
-int		disconnect_chan(t_user *list, t_chan *c, int fd);
+int		disconnect_chan(t_node *node, t_chan *c, int fd);
 int		my_quit(t_env *e, char **cmd, int fd);
 int		my_list(t_env *e, char **cmd, int fd);
 int		my_nick(t_env *e, char **cmd, int fd);
