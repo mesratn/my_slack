@@ -94,6 +94,7 @@ void		add_user_to_chan(t_chan *list, t_user *u);
 void		move_user_to_chan(t_chan *chan_list, t_chan *chan, char *name_chan, t_user *user);
 t_user		*get_current_user_in_chan(t_chan *c, int fd);
 void		init_channel(t_env *e);
+int		select_join(t_env *e, t_user *u, t_chan *chan, char *cmd );
 
 void		my_putstr(char *);
 void		my_putstr_fd(int fd, char *str);
