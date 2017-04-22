@@ -4,7 +4,7 @@ void		my_disconnect(t_env *e, int fd)
 {
   t_user	*tmp;
   t_chan	*current_chan;
-  t_user	*tmp_user;
+  t_node	*node;
 
   tmp = e->list;
   close(fd);
@@ -16,15 +16,15 @@ void		my_disconnect(t_env *e, int fd)
   current_chan = get_current_chan(e->chan, fd);
   if (current_chan != NULL)
     {
-      tmp_user = current_chan->user;
-      while (tmp_user)
+      node = current_chan->first;
+      while (node)
 	{
-	  if (tmp_user->fd == fd && tmp_user->type == FD_CLIENT)
+	  if (node->user->fd == fd && node->user->type == FD_CLIENT)
 	    {
-	      tmp_user->type = FD_FREE;
-	      tmp_user->login = NULL;
+	      node->user->type = FD_FREE;
+	      node->user->login = NULL;
 	    }
-	  tmp_user = tmp_user->next;
+	  node = node->next;
 	}
     }
 }

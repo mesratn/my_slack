@@ -44,7 +44,7 @@ int		my_exit(t_env *e, char **cmd, int fd)
     {
       while (tmp)
 	{
-	  disconnect_chan(tmp->user, tmp, fd);
+	  disconnect_chan(tmp->first->user, tmp, fd);
 	  tmp = tmp->next;
 	}
     }
@@ -88,7 +88,7 @@ int		my_quit(t_env *e, char **cmd, int fd)
     }
   while (tmp)
     {
-      disconnect_chan(tmp->user, tmp, fd);
+      disconnect_chan(tmp->first->user, tmp, fd);
       tmp = tmp->next;
     }
   return (0);
