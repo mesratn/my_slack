@@ -1,11 +1,10 @@
 /*
 ** add_client.c for my_slack in /home/nada/Documents/ETNA/devc/slack/my_slack/server_nada
-**
 ** Made by MESRATI Nada
 ** Login   <mesrat_n@etna-alternance.net>
 **
 ** Started on  Fri Apr 21 13:33:39 2017 MESRATI Nada
-** Last update Fri Apr 21 22:16:03 2017 BILLAUD Jean
+** Last update Sat Apr 22 14:30:40 2017 BILLAUD Jean
 */
 
 #include "server.h"

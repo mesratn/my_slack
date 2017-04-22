@@ -55,7 +55,8 @@ void		add_elem_chan(t_chan **list, char *name)
     return ;
   new->name = name;
   new->next = NULL;
-  new->user = NULL;
+  new->first = NULL;
+  new->last = NULL;
   if (*list == NULL)
     *list = new;
   else
@@ -67,8 +68,21 @@ void		add_elem_chan(t_chan **list, char *name)
     }
 }
 
-void		add_user_to_chans(t_chan **chan, t_user	*user)
+void	      	add_user_to_chan(t_chan *chan, t_user *user)
 {
   t_node	*node;
-  
+
+  node = create_node(user);
+  user->state = CONNECTED;
+  if (chan->first == NULL)
+    {
+      chan->first = node;
+      chan->last = node;
+    }
+  else
+    {
+      chan->last->next = node;
+      node->prev = chan->last;
+      chan->last = node;
+    }
 }

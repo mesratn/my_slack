@@ -10,25 +10,25 @@ void	writing(int fd, char *login, char *buf)
 
 void		send_msg_in_chan(t_env *e, int fd, char * buf)
 {
-  t_user	*user;
+  t_node	*node;
   t_chan	*current_chan;
   t_user	*current_user;
 
   current_chan = get_current_chan(e->chan, fd);
-  user = (current_chan == NULL) ? NULL : current_chan->user;
-  current_user = (!user) ? NULL : get_current_user(user, fd);
+  node = (current_chan == NULL) ? NULL : current_chan->first;
+  current_user = (!node) ? NULL : get_current_user_in_chan(current_chan, fd);
   if (!current_chan)
     my_putstr_fd(fd, "send msg: error join a chan before.\n");
-  while (user)
+  while (node)
     {
-      if (FD_ISSET(user->fd, &e->fd_write) && fd != user->fd &&
-	  user->type == FD_CLIENT)
+      if (FD_ISSET(node->user->fd, &e->fd_write) && fd != node->user->fd &&
+	  node->user->type == FD_CLIENT)
 	{
 	  if (current_user != NULL && current_user->login)
-	    writing(user->fd, current_user->login, buf);
+	    writing(node->user->fd, current_user->login, buf);
 	  else if (current_user != NULL)
-	    writing(user->fd, "unknown", buf);
+	    writing(node->user->fd, "unknown", buf);
 	}
-      user = user->next;
+      node = node->next;
     }
 }

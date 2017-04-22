@@ -30,10 +30,10 @@ typedef struct			s_user
 
 typedef struct			s_node
 {
-  t_node			*next;
-  t_node			*prev;
+  struct s_node			*next;
+  struct s_node			*prev;
   t_user			*user;
-}
+}				t_node;
 
 typedef struct			s_chan
 {
@@ -68,7 +68,7 @@ int		check_fd(t_user **list, int fd);
 void		add_elem_fd(t_user **list, int fd, int type, vfptr fptr_read);
 void		add_elem_chan(t_chan **list, char *name);
 void		change_chan(t_chan *list, char *name_chan, int fd);
-int		check_user_in_chan(t_user *user, int fd);
+int		check_user_in_chan(t_node *node, int fd);
 void		client_read(t_env *e, int fd);
 int		get_cmd(t_env *e, char *buff, int fd);
 int		my_exit(t_env *e, char **cmd, int fd);
@@ -87,7 +87,12 @@ int		my_join(t_env *e, char **cmd, int fd);
 int		my_server(t_env *e);
 void		send_msg_in_chan(t_env *e, int fd, char * buf);
 void		show_all_user(t_chan *list);
-void		move_node_from_chan(t_node *n);
+void		move_node_from_chan(t_chan *chan, t_node *n);
+t_node		*create_node(t_user *user);
+t_node		*get_user_node(t_chan *list, int fd);
+void		add_user_to_chan(t_chan *list, t_user *u);
+void		move_user_to_chan(t_chan *chan_list, t_chan *chan, char *name_chan, t_user *user);
+t_user		*get_current_user_in_chan(t_chan *c, int fd);
 
 void		my_putstr(char *);
 void		my_putstr_fd(int fd, char *str);
