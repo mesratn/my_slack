@@ -16,7 +16,7 @@ int		my_join(t_env *e, char **cmd, int fd)
 	if (!my_strcmp(tmp->name, cmd[1]))
 	  {
 	    change_chan(e->chan, cmd[1], fd);
-	    if (!check_user_in_chan(tmp->user, fd))
+	    if (!check_user_in_chan(tmp->first, fd))
 	      {
 		add_elem_fd(&tmp->user, fd, FD_CLIENT, client_read);
 		return (1);

@@ -29,6 +29,7 @@ void		add_elem_fd(t_user **list, int fd, int type, vfptr fptr_read)
   new->login = NULL;
   new->fd = fd;
   new->type = type;
+  new->state = WAITING;
   new->fptr_read = fptr_read;
   new->login = NULL;
   new->next = NULL;
@@ -64,4 +65,10 @@ void		add_elem_chan(t_chan **list, char *name)
 	tmp = tmp->next;
       tmp->next = new;
     }
+}
+
+void		add_user_to_chans(t_chan **chan, t_user	*user)
+{
+  t_node	*node;
+  
 }

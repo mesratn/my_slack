@@ -4,8 +4,10 @@
 # define			FD_FREE		0
 # define			FD_CLIENT	1
 # define			FD_SERVER	2
+# define			WAITING         3
+# define			CONNECTED	4
 # define			MAX_FD		255
-# define			BUFF_SIZE	3000
+# define			BUFF_SIZE	3000			
 
 # include			<arpa/inet.h>
 # include			<sys/socket.h>
@@ -21,14 +23,23 @@ typedef struct			s_user
   char				*login;
   int				fd;
   int				type;
+  int				state;
   vfptr				fptr_read;
   struct s_user			*next;
 }				t_user;
 
+typedef struct			s_node
+{
+  t_node			*next;
+  t_node			*prev;
+  t_user			*user;
+}
+
 typedef struct			s_chan
 {
   char				*name;
-  t_user			*user;
+  t_node      			*first;
+  t_node	        	*last;
   int				pos;
   struct s_chan			*next;
 }				t_chan;
@@ -76,6 +87,7 @@ int		my_join(t_env *e, char **cmd, int fd);
 int		my_server(t_env *e);
 void		send_msg_in_chan(t_env *e, int fd, char * buf);
 void		show_all_user(t_chan *list);
+void		move_node_from_chan(t_node *n);
 
 void		my_putstr(char *);
 void		my_putstr_fd(int fd, char *str);
