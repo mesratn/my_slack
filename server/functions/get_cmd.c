@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:36 2017 BILLAUD Jean
-** Last update Sun Apr 23 11:43:50 2017 BILLAUD Jean
+** Last update Sun Apr 23 14:02:01 2017 BILLAUD Jean
 */
 
 #include 	"../headers/server.h"
@@ -68,10 +68,12 @@ int		disconnect_chan(t_node *n, t_chan *c, int fd)
   t_node	*tmp;
 
   tmp = n;
-  while (n)
+  while (tmp)
     {
-      if (tmp->user->fd == fd && tmp->user->type == FD_CLIENT)
+      my_putstr("OK\n");
+      if (tmp->user->fd == fd)
 	{
+	  my_putstr("JE SUIS ICI \n \n \n");
 	  tmp->user->state = WAITING;
 	  move_node_from_chan(c, tmp);
 	  free_node(tmp);
@@ -80,7 +82,7 @@ int		disconnect_chan(t_node *n, t_chan *c, int fd)
 	  my_putstr_fd(fd, " \n");
 	  return (0);
 	}
-      n = n->next;
+      tmp = tmp->next;
     }
   return (0);
 }
