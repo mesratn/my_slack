@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:36 2017 BILLAUD Jean
-** Last update Sun Apr 23 19:47:00 2017 DEBELLEIX Jérémy
+** Last update Sun Apr 23 21:40:59 2017 DEBELLEIX Jérémy
 */
 
 #include 	"../headers/server.h"
@@ -198,13 +198,11 @@ void            show_list_commands(t_env *e, int fd)
     }
 }
 
-void    send_direct_msg(t_env *e, char **cmd, int fd)
+void    	send_direct_msg(t_env *e, char **cmd, int fd)
 {
   t_user        *tmp;
-  int   i;
+  int   	i;
 
-  /*TODO afficher la personne qui envoie le message*/
-  (void)fd;
   i = 1;
   tmp = e->list;
   while (tmp)
@@ -213,18 +211,35 @@ void    send_direct_msg(t_env *e, char **cmd, int fd)
 	{
 	  if (my_strcmp(tmp->login, cmd[1]) == 0)
 	    {
+	      show_sender(e, fd, tmp->fd);
 	      while (cmd[++i])
 		{
 		  my_putstr_fd(tmp->fd, cmd[i]);
 		  my_putstr_fd(tmp->fd, " ");
 		}
+	      my_putstr_fd(tmp->fd, "\n");
 	    }
 	}
       tmp = tmp->next;
     }
 }
 
-int    is_existing_user(char *login, t_env *e, int fd)
+void		show_sender(t_env *e, int fd_sender, int fd_receiver)
+{
+  t_user 	*sender;
+  t_user	*receiver;
+
+  sender = get_current_user(e->list, fd_sender);
+  receiver = get_current_user(e->list, fd_receiver);
+  my_putstr_fd(fd_receiver, "Message from ");
+  if (sender->login)
+    my_putstr_fd(fd_receiver, sender->login);
+  else
+    my_putstr_fd(fd_receiver, "unknown user");
+  my_putstr_fd(fd_receiver, " : ");
+}
+
+int    		is_existing_user(char *login, t_env *e, int fd)
 {
   t_user        *tmp;
   
@@ -242,3 +257,4 @@ int    is_existing_user(char *login, t_env *e, int fd)
     }
   return (0);
 }
+
