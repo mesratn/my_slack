@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:36 2017 BILLAUD Jean
-** Last update Sun Apr 23 16:23:27 2017 BILLAUD Jean
+** Last update Sun Apr 23 19:47:00 2017 DEBELLEIX Jérémy
 */
 
 #include 	"../headers/server.h"
@@ -124,29 +124,121 @@ int		my_list(t_env *e, char **cmd, int fd)
   return (0);
 }
 
-int		my_nick(t_env *e, char **cmd, int fd)
+int   my_nick(t_env *e, char **cmd, int fd)
 {
-  /*A FAIRE*/
-  (void)e;
-  (void)cmd;
-  (void)fd;
+  t_user  *user;
+
+  user = get_current_user(e->list, fd);
+  if (cmd[2])
+      my_putstr_fd(fd, "/nick : error, too much arguments.\n");
+  else if (cmd[1])
+      user->login = my_strdup(cmd[1]);
+  else
+    my_putstr_fd(fd, "/nick : error, argument missed.\n");
   return (0);
 }
 
-int		my_users(t_env *e, char **cmd, int fd)
+int   my_users(t_env *e, char **cmd, int fd)
 {
-  /*A FAIRE*/
-  (void)e;
-  (void)cmd;
-  (void)fd;
+  if (tablen(cmd) == 1)
+    show_list_users(e, fd);
+  else
+    my_putstr_fd(fd, "/users : error, too much arguments.\n");
   return (0);
 }
 
-int		my_whisp(t_env *e, char **cmd, int fd)
+int   my_whisp(t_env *e, char **cmd, int fd)
 {
-  /*A FAIRE*/
-  (void)e;
-  (void)cmd;
+  int isExistingUser;
+
+  if (tablen(cmd) < 3)
+    my_putstr_fd(fd, "/users : error, too few arguments.\n");
+  else
+    {
+      isExistingUser = is_existing_user(cmd[1], e, fd);
+      if (isExistingUser == 1)
+          send_direct_msg(e, cmd, fd);
+      else
+	my_putstr_fd(fd, "This user doesn't exist");
+    }
+  return (0);
+}
+
+int   my_commands_list(t_env *e, char **cmd, int fd)
+{
+  if (tablen(cmd) == 1)
+    show_list_commands(e, fd);
+  else
+    my_putstr_fd(fd, "/help : error, too much arguments.\n");
+  return (0);
+}
+
+void            show_list_commands(t_env *e, int fd)
+{
+  t_chan        *chan;
+  int           i;
+
+  i = 0;
+  if ((chan = get_current_chan(e->chan, fd)))
+    {
+      if (chan->name)
+	{
+	  my_putstr_fd(fd, "Current channel : ");
+	  my_putstr_fd(fd, chan->name);
+	}
+    }
+  else
+    my_putstr_fd(fd, "You are in any channel");
+  my_putstr_fd(fd, "\nCommandes possibles :\n");
+  while (g_tab[i].cmd != NULL)
+    {
+      my_putstr_fd(fd, g_tab[i].cmd);
+      my_putstr_fd(fd, "\n");
+      ++i;
+    }
+}
+
+void    send_direct_msg(t_env *e, char **cmd, int fd)
+{
+  t_user        *tmp;
+  int   i;
+
+  /*TODO afficher la personne qui envoie le message*/
   (void)fd;
+  i = 1;
+  tmp = e->list;
+  while (tmp)
+    {
+      if (tmp->login)
+	{
+	  if (my_strcmp(tmp->login, cmd[1]) == 0)
+	    {
+	      while (cmd[++i])
+		{
+		  my_putstr_fd(tmp->fd, cmd[i]);
+		  my_putstr_fd(tmp->fd, " ");
+		}
+	    }
+	}
+      tmp = tmp->next;
+    }
+}
+
+int    is_existing_user(char *login, t_env *e, int fd)
+{
+  t_user        *tmp;
+  
+  tmp = e->list;
+  while (tmp)
+    {
+      if (tmp->fd != fd && tmp->login)
+        {
+          if (my_strcmp(tmp->login, login) == 0)
+            {
+	      return (1);
+            }
+        }
+      tmp = tmp->next;
+    }
   return (0);
 }
