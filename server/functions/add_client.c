@@ -4,7 +4,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 **
 ** Started on  Fri Apr 21 13:33:39 2017 MESRATI Nada
-** Last update Sun Apr 23 15:22:20 2017 BILLAUD Jean
+** Last update Sun Apr 23 17:22:11 2017 BILLAUD Jean
 */
 
 #include 		"../headers/server.h"
@@ -12,9 +12,10 @@
 void			server_read(t_env *e, int s)
 {
   int			cs;
-  struct sockaddr_in	client_sin = { 0 };
+  struct sockaddr_in	client_sin;
   socklen_t		client_sin_len;
 
+  memset(&client_sin, 0, sizeof (struct sockadd_in *));
   client_sin_len = sizeof (client_sin);
   cs = accept(s, (struct sockaddr *)&client_sin, &client_sin_len);
   if (cs == -1)
