@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:05:55 2017 BILLAUD Jean
-** Last update Sat Apr 22 23:23:45 2017 BILLAUD Jean
+** Last update Sun Apr 23 13:32:49 2017 BILLAUD Jean
 */
 
 #include 	"../headers/server.h"
@@ -84,6 +84,7 @@ void	      	add_user_to_chan(t_chan *chan, t_user *user)
 
   node = create_node(user);
   user->state = CONNECTED;
+  user->type = FD_CLIENT;
   if (chan->first == NULL)
     {
       chan->first = node;

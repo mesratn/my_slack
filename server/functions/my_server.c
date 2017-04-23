@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 **
 ** Started on  Fri Apr 21 13:35:57 2017 MESRATI Nada
-** Last update Sat Apr 22 18:25:56 2017 BILLAUD Jean
+** Last update Sun Apr 23 13:15:08 2017 BILLAUD Jean
 */
 
 #include "../headers/server.h"
@@ -24,7 +24,8 @@ int			my_server(t_env *e)
 	{
 	  FD_SET(tmp->fd, &e->fd_read);
 	  FD_SET(tmp->fd, &e->fd_write);
-	  e->fd_max = tmp->fd;
+	  if (tmp->fd > e->fd_max)
+	    e->fd_max = tmp->fd;
 	}
       tmp = tmp->next;
     }

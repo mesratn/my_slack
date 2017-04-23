@@ -4,7 +4,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 **
 ** Started on  Fri Apr 21 13:33:39 2017 MESRATI Nada
-** Last update Sat Apr 22 18:40:59 2017 BILLAUD Jean
+** Last update Sun Apr 23 11:23:11 2017 BILLAUD Jean
 */
 
 #include 		"../headers/server.h"
@@ -12,11 +12,11 @@
 void			server_read(t_env *e, int s)
 {
   int			cs;
-  struct sockaddr_in	client_sin;
-  socklen_t		*client_sin_len;
+  struct sockaddr_in	client_sin = { 0 };
+  socklen_t		client_sin_len;
 
-  cs = accept(s, (struct sockaddr *)&client_sin,
-	      (socklen_t *)&client_sin_len);
+  client_sin_len = sizeof (client_sin);
+  cs = accept(s, (struct sockaddr *)&client_sin, &client_sin_len);
   if (cs == -1)
     return ;
   my_putstr("New client connected\n");
