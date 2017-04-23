@@ -5,15 +5,15 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:18 2017 BILLAUD Jean
-** Last update Sun Apr 23 11:31:14 2017 BILLAUD Jean
+** Last update Sun Apr 23 15:50:16 2017 BILLAUD Jean
 */
 
-#include 	"../headers/server.h"
+#include "../headers/server.h"
 
-void		client_read(t_env *e, int fd)
+void	client_read(t_env *e, int fd)
 {
-  int		r;
-  char		buf[BUFF_SIZE];
+  int	r;
+  char	buf[BUFF_SIZE];
 
   r = read(fd, buf, BUFF_SIZE);
   if (r > 0)
@@ -24,4 +24,19 @@ void		client_read(t_env *e, int fd)
     }
   else
     my_disconnect(e, fd);
+}
+
+int	server_cmd(t_env *e, int fd)
+{
+  int	r;
+  char	buf[BUFF_SIZE];
+
+  r = read(fd, buf, BUFF_SIZE);
+  if (r > 0)
+    {
+      buf[r - 1] = '\0';
+      if(!get_serv_cmd(e, buf))
+	return (0);
+    }
+  return (1);
 }

@@ -62,6 +62,14 @@ typedef struct			s_cmd
   ifptr				fptr_cmd;
 }				t_cmd;
 
+typedef				int(*sptr)();
+
+typedef struct			s_srv_cmd
+{
+  char				*cmd;
+  sptr				fptr_cmd;
+}				t_srv_cmd;
+  
 void		add_client(t_env *e);
 t_env		*create_env(int p);
 int		check_fd(t_user **list, int fd);
@@ -95,7 +103,9 @@ void		move_user_to_chan(t_chan *chan_list, t_chan *chan, char *name_chan, t_user
 t_user		*get_current_user_in_chan(t_chan *c, int fd);
 void		init_channel(t_env *e);
 int		select_join(t_env *e, t_user *u, t_chan *chan, char *cmd );
+int		server_cmd(t_env *e, int fd);
 
+void		writing(int fd, char *login, char *buf);
 void		my_putstr(char *);
 void		my_putstr_fd(int fd, char *str);
 void		my_putnbr_fd(int, int);
@@ -107,6 +117,10 @@ int		my_strncmp(char *, char *, int);
 int		my_strlen(char *);
 int		tablen(char **);
 int		my_getnbr(char *);
+int		get_serv_cmd(t_env *e, char *buff);
+int		quit_serv(t_env *e, char **cmd);
+void	        send_msg_to_all(t_env *e, char *msg);
+int		kick(t_env *e, char **cmd);
 
 void		free_user(t_user *u);
 void		free_node(t_node *n);

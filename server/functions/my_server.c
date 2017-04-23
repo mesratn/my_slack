@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 **
 ** Started on  Fri Apr 21 13:35:57 2017 MESRATI Nada
-** Last update Sun Apr 23 13:15:08 2017 BILLAUD Jean
+** Last update Sun Apr 23 15:43:41 2017 BILLAUD Jean
 */
 
 #include "../headers/server.h"
@@ -29,6 +29,7 @@ int			my_server(t_env *e)
 	}
       tmp = tmp->next;
     }
+  FD_SET(0, &e->fd_read);
   if (select(e->fd_max + 1,
 	     &e->fd_read, &e->fd_write, NULL, NULL) == -1)
     return (0);
@@ -39,5 +40,8 @@ int			my_server(t_env *e)
 	tmp->fptr_read(e, tmp->fd);
       tmp = tmp->next;
     }
+  if (FD_ISSET(0, &e->fd_read))
+    if(!server_cmd(e, 0))
+      return (0);
   return (1);
 }

@@ -32,6 +32,7 @@ SRCS_SERVER =   server/functions/main.c			\
 		server/functions/create_node.c		\
 		server/functions/get_cmd.c		\
 		server/functions/get_current.c		\
+		server/functions/get_cmd_serv.c		\
 		server/functions/list.c			\
 		server/functions/move_node.c		\
 		server/functions/my_disconnect.c	\

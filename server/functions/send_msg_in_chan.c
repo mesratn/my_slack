@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:08:06 2017 BILLAUD Jean
-** Last update Sat Apr 22 19:21:26 2017 BILLAUD Jean
+** Last update Sun Apr 23 15:19:25 2017 BILLAUD Jean
 */
 
 #include 	"../headers/server.h"
@@ -18,7 +18,7 @@ void		writing(int fd, char *login, char *buf)
   my_putstr_fd(fd, "\n");
 }
 
-void		send_msg_in_chan(t_env *e, int fd, char * buf)
+void		send_msg_in_chan(t_env *e, int fd, char *buf)
 {
   t_node	*node;
   t_chan	*current_chan;
