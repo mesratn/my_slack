@@ -5,25 +5,41 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Oct  7 08:31:37 2014 MESRATI Nada
-** Last update Thu Oct  9 18:48:17 2014 MESRATI Nada
+** Last update Sun Apr 23 10:29:36 2017 BILLAUD Jean
 */
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+int	my_strlnth(char *str)
+{
+  int	i;
 
-char	*my_strcpy(char *dest, char *src);
+  i = 0;
+  while (str[i])
+    i = i + 1;
+  i += 1;
+  return (i);
+}
+
+char	*strcopy(char *dest, char *src)
+{
+  int	i;
+
+  i = 0;
+  while (src[i])
+    {
+      dest[i] = src[i];
+      i++;
+    }
+  dest[i] = '\0';
+  return (dest);
+
+}
 
 char	*my_strdup(char *str)
 {
-  int	i;
-  char	*dest;
-
-  i = 0;
-  while (str[i] != '\0')
-    i++;
-  dest = malloc(i * (sizeof(*str)));
-  if(dest == NULL)
-    return 0;
-  dest = my_strcpy(dest, str);
-  return (dest);
+  char	*new_str;
+  new_str = malloc((my_strlnth(str)) * sizeof(char));
+  strcopy(new_str, str);
+  return (new_str);
 }

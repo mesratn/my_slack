@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Fri Apr 21 21:25:51 2017 BILLAUD Jean
-** Last update Sat Apr 22 23:58:43 2017 BILLAUD Jean
+** Last update Sun Apr 23 10:30:04 2017 BILLAUD Jean
 */
 
 #include "../headers/server.h"
@@ -25,7 +25,18 @@ t_env	*create_env(int p)
 
 void	init_channel(t_env *e)
 {
-  add_elem_chan(&e->chan, my_strdup("general"));
-  add_elem_chan(&e->chan, my_strdup("bibliotheque"));
-  add_elem_chan(&e->chan, my_strdup("musique"));
+  int   pos;
+  char *name;
+  
+  pos = 1;
+   if ((name = malloc(sizeof(char) * 2)) == NULL)
+        return ;
+    while (pos <= 9)
+        {
+            name[0] = pos + '0';
+            name[1] = '\0';
+           add_elem_chan(&e->chan, my_strdup(name));
+            pos++;
+          }
 }
+
