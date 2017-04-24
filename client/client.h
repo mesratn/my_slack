@@ -19,5 +19,6 @@ void	my_putstr(char *str);
 char    **my_str_to_wordtab(char *str, char separe);
 int	my_strcmp(char *s1, char *s2);
 int	my_client(int s);
+int	connect_serv(char **cmd);
 
 #endif

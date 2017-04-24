@@ -5,9 +5,10 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Mar 28 17:19:19 2017 MESRATI Nada
-** Last update Wed Apr 12 21:54:22 2017 BILLAUD Jean
+** Last update Mon Apr 24 22:43:28 2017 BILLAUD Jean
 */
 
+#include		<string.h>
 #include		"client.h"
 
 /**
@@ -23,6 +24,7 @@ int			my_connect(char **cmd)
   int			s;
   int			port;
 
+  memset(&sin, 0, sizeof (struct sockaddr_in));
   if (cmd[1] != NULL)
     port = my_getnbr(cmd[1]);
   pe = getprotobyname("TCP");
