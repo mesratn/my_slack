@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 **
 ** Started on  Fri Apr 21 13:35:57 2017 MESRATI Nada
-** Last update Sun Apr 23 15:43:41 2017 BILLAUD Jean
+** Last update Mon Apr 24 17:37:59 2017 BILLAUD Jean
 */
 
 #include "../headers/server.h"
@@ -13,7 +13,8 @@
 int			my_server(t_env *e)
 {
   t_user		*tmp;
-
+  t_user		*next;
+  
   FD_ZERO(&e->fd_read);
   FD_ZERO(&e->fd_write);
   e->fd_max = 0;
@@ -36,9 +37,10 @@ int			my_server(t_env *e)
   tmp = e->list;
   while (tmp != NULL)
     {
+      next = tmp->next;
       if (FD_ISSET(tmp->fd, &e->fd_read))
 	tmp->fptr_read(e, tmp->fd);
-      tmp = tmp->next;
+      tmp = next;
     }
   if (FD_ISSET(0, &e->fd_read))
     if(!server_cmd(e, 0))

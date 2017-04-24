@@ -27,6 +27,7 @@ SRCS_SERVER =   server/functions/main.c			\
 		server/functions/add_elem.c		\
 		server/functions/change_chan.c		\
 		server/functions/check_user_in_chan.c	\
+		server/functions/freetab.c		\
 		server/functions/client_read.c		\
 		server/functions/create_env.c		\
 		server/functions/create_node.c		\

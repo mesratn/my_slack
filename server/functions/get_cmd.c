@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:36 2017 BILLAUD Jean
-** Last update Sun Apr 23 21:40:59 2017 DEBELLEIX Jérémy
+** Last update Mon Apr 24 17:30:22 2017 BILLAUD Jean
 */
 
 #include 	"../headers/server.h"
@@ -31,15 +31,12 @@ int		get_cmd(t_env *e, char *buff, int fd)
   if (buff[0] != '\0')
     {
       cmd = my_str_to_wordtab(buff, ' ');
-      if (cmd[0] == NULL)
-	return (0);
       while (g_tab[++i].cmd != NULL 
 	     && my_strcmp(cmd[0], g_tab[i].cmd));
-      if (g_tab[i].cmd == NULL)
-	return (0);
-      else
-	g_tab[i].fptr_cmd(e, cmd, fd);
+      if (g_tab[i].cmd != NULL)
+	  g_tab[i].fptr_cmd(e, cmd, fd);
       show_all_user(e->chan);
+      freetab(cmd);
       return (1);
     }
   return (0);
@@ -227,10 +224,10 @@ void    	send_direct_msg(t_env *e, char **cmd, int fd)
 void		show_sender(t_env *e, int fd_sender, int fd_receiver)
 {
   t_user 	*sender;
-  t_user	*receiver;
+  //t_user	*receiver;
 
   sender = get_current_user(e->list, fd_sender);
-  receiver = get_current_user(e->list, fd_receiver);
+  //receiver = get_current_user(e->list, fd_receiver);
   my_putstr_fd(fd_receiver, "Message from ");
   if (sender->login)
     my_putstr_fd(fd_receiver, sender->login);
