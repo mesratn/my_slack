@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:36 2017 BILLAUD Jean
-** Last update Mon Apr 24 21:40:26 2017 BILLAUD Jean
+** Last update Mon Apr 24 22:08:55 2017 BILLAUD Jean
 */
 
 #include 	"../headers/server.h"
@@ -19,6 +19,7 @@ t_cmd		g_tab[] =
     {"/exit", &my_exit},
     {"/users", &my_users},
     {"/whisp", &my_whisp},
+    {"/help", &my_commands_list},
     {NULL, NULL}
   };
 
