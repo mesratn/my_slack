@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:36 2017 BILLAUD Jean
-** Last update Mon Apr 24 18:50:07 2017 DEBELLEIX Jérémy
+** Last update Mon Apr 24 19:36:35 2017 DEBELLEIX Jérémy
 */
 
 #include 	"../headers/server.h"
@@ -74,23 +74,4 @@ void            show_list_commands(t_env *e, int fd)
       my_putstr_fd(fd, "\n");
       ++i;
     }
-}
-
-int    		is_existing_user(char *login, t_env *e, int fd)
-{
-  t_user        *tmp;
-  
-  tmp = e->list;
-  while (tmp)
-    {
-      if (tmp->fd != fd && tmp->login)
-        {
-          if (my_strcmp(tmp->login, login) == 0)
-            {
-	      return (1);
-            }
-        }
-      tmp = tmp->next;
-    }
-  return (0);
 }

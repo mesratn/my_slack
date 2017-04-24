@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:45 2017 BILLAUD Jean
-** Last update Sat Apr 22 19:07:25 2017 BILLAUD Jean
+** Last update Mon Apr 24 19:27:52 2017 DEBELLEIX Jérémy
 */
 
 #include 	"../headers/server.h"
@@ -76,4 +76,23 @@ t_user		*get_current_user_in_chan(t_chan *c, int fd)
       node = node->next;
     }
   return (NULL);
+}
+
+int             is_existing_user(char *login, t_env *e, int fd)
+{
+  t_user        *tmp;
+
+  tmp = e->list;
+  while (tmp)
+    {
+      if (tmp->fd != fd && tmp->login)
+        {
+          if (my_strcmp(tmp->login, login) == 0)
+            {
+              return (1);
+            }
+        }
+      tmp = tmp->next;
+    }
+  return (0);
 }
