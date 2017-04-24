@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:36 2017 BILLAUD Jean
-** Last update Mon Apr 24 19:36:35 2017 DEBELLEIX Jérémy
+** Last update Mon Apr 24 21:40:26 2017 BILLAUD Jean
 */
 
 #include 	"../headers/server.h"
@@ -31,10 +31,19 @@ int		get_cmd(t_env *e, char *buff, int fd)
   if (buff[0] != '\0')
     {
       cmd = my_str_to_wordtab(buff, ' ');
+      if (cmd[0] == NULL)
+	{
+	  freetab(cmd);
+	  return (0);
+	}
       while (g_tab[++i].cmd != NULL 
 	     && my_strcmp(cmd[0], g_tab[i].cmd));
-      if (g_tab[i].cmd != NULL)
-	  g_tab[i].fptr_cmd(e, cmd, fd);
+      if (g_tab[i].cmd == NULL)
+	{
+	  freetab(cmd);
+	  return (0);
+	}
+      g_tab[i].fptr_cmd(e, cmd, fd);
       show_all_user(e->chan);
       freetab(cmd);
       return (1);
