@@ -45,7 +45,11 @@ SRCS_SERVER =   server/functions/main.c			\
 		server/functions/show_all_users.c	\
 		server/functions/tablen.c		\
 		server/functions/free_struct.c		\
-		server/functions/free_chain.c
+		server/functions/free_chain.c		\
+		server/functions/my_whisp.c		\
+		server/functions/my_nick.c		\
+		server/functions/cmd_exit_func.c	\
+		server/functions/cmd_list.c
 
 OBJS_CLIENT =	$(SRCS_CLIENT:%.c=%.o)
 
