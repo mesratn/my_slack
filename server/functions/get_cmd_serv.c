@@ -74,9 +74,10 @@ int		kick(t_env *e, char **cmd)
   i = 0;
   u = NULL;
   u_c = NULL;
+  msg = cmd[1];
   if (tablen(cmd) == 2)
     {
-      i = my_getnbr(cmd[1]);
+      i = my_getnbr(msg);
       if ((u = get_current_user(e->list, i)) == NULL)
 	return (1);
       msg = my_strdup("Vous avez été kick\n");
