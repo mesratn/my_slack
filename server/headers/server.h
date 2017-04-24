@@ -123,10 +123,10 @@ int		quit_serv(t_env *e, char **cmd);
 void	        send_msg_to_all(t_env *e, char *msg);
 int		kick(t_env *e, char **cmd);
 void            show_list_users(t_env *e, int fd);
-int   my_commands_list(t_env *e, char **cmd, int fd);
+int   		my_commands_list(t_env *e, char **cmd, int fd);
 void            show_list_commands(t_env *e, int fd);
-void    send_direct_msg(t_env *e, char **cmd, int fd);
-int    is_existing_user(char *login, t_env *e, int fd);
+void           	send_direct_msg(t_env *e, char **cmd, int fd);
+int    		is_existing_user(char *login, t_env *e, int fd);
 void            show_sender(t_env *e, int fd_sender, int fd_receiver);
 
 void		free_user(t_user *u);
@@ -136,5 +136,6 @@ void		free_env(t_env *e);
 void		free_all_users(t_env *e);
 void		free_all_chan(t_env *e);
 void		free_all_node(t_chan *c);
+void		freetab(char **tab);
 
 #endif

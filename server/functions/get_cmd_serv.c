@@ -16,16 +16,18 @@ int		get_serv_cmd(t_env *e, char *buff)
   if (buff[0] != '\0')
     {
       cmd = my_str_to_wordtab(buff, ' ');
-      if (cmd[0] == NULL)
-	return (1);
       while (g_serv_tab[++i].cmd != NULL
 	     && my_strcmp(cmd[0], g_serv_tab[i].cmd));
-      if (g_serv_tab[i].cmd == NULL)
-	return (1);
-      else
-	if(!g_serv_tab[i].fptr_cmd(e, cmd))
-	  return (0);
+      if (g_serv_tab[i].cmd != NULL)
+	{
+	  if(!g_serv_tab[i].fptr_cmd(e, cmd))
+	    {
+	      freetab(cmd);
+	      return (0);
+	    }
+	}
       show_all_user(e->chan);
+      freetab(cmd);
       return (1);
     }
   return (1);
