@@ -5,30 +5,8 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Thu Oct  2 11:07:05 2014 MESRATI Nada
-** Last update Mon Apr 24 18:10:01 2017 BILLAUD Jean
+** Last update Mon Apr 24 18:20:05 2017 BILLAUD Jean
 */
-/*#include <stdlib.h>
-#include <stdio.h>
-
-int     my_getnbr(char *str)
-{
-  int   i;
-  int   nb;
-  int   neg;
- 
-  if (!str)
-    return (0);
-  neg = 1;
-  for (i = 0; !(str[i] >= '0' && str[i] <= '9'); i++);
-  if (str[i - 1] == '-')
-    neg = -1;
-  for (nb = 0; str[i] >= '0' && str[i] <= '9'; i++)
-    {
-      nb *= 10;
-      nb += str[i] - '0';
-    }
-  return (nb * neg);
-}*/
 
 #include <unistd.h>
 
