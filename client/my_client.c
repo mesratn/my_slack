@@ -5,15 +5,15 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Apr 18 16:30:20 2017 MESRATI Nada
-** Last update Tue Apr 18 17:12:44 2017 MESRATI Nada
+** Last update Tue Apr 25 19:55:13 2017 BILLAUD Jean
 */
 
 #include "client.h"
  
-int	send_input(int s)
+int		send_input(int s)
 {
-  char	buff[BUFF_SIZE];
-  int	r;
+  char		buff[BUFF_SIZE];
+  int		r;
   
   my_bzero(buff, BUFF_SIZE);
   r = read(0, buff, BUFF_SIZE);
@@ -30,10 +30,10 @@ int	send_input(int s)
     }
 }
 
-int	get_msg(int s)
+int		get_msg(int s)
 {
-  char	buff[BUFF_SIZE];
-  int	r;
+  char		buff[BUFF_SIZE];
+  int		r;
   
   my_bzero(buff, BUFF_SIZE);
   r = recv(s, buff, BUFF_SIZE, 0);

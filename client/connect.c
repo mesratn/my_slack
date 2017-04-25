@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Mar 28 17:19:19 2017 MESRATI Nada
-** Last update Mon Apr 24 22:43:28 2017 BILLAUD Jean
+** Last update Tue Apr 25 19:51:55 2017 BILLAUD Jean
 */
 
 #include		<string.h>
@@ -36,7 +36,7 @@ int			my_connect(char **cmd)
   sin.sin_family = AF_INET;
   sin.sin_port = htons(port);
   sin.sin_addr.s_addr = inet_addr(cmd[0]);
-  if (connect(s, (const struct sockaddr *)&sin, sizeof(sin)) == -1)
+  if (connect(s, (const struct sockaddr *)&sin, sizeof (sin)) == -1)
     {
       my_putstr("Error connect()\n");
       return (-1);

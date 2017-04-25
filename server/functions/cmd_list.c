@@ -5,7 +5,7 @@
 ** Login   <debell_j@etna-alternance.net>
 ** 
 ** Started on  Mon Apr 24 18:39:37 2017 DEBELLEIX Jérémy
-** Last update Mon Apr 24 18:43:21 2017 DEBELLEIX Jérémy
+** Last update Tue Apr 25 20:13:07 2017 BILLAUD Jean
 */
 
 #include        "../headers/server.h"
@@ -31,7 +31,7 @@ int             my_list(t_env *e, char **cmd, int fd)
   return (0);
 }
 
-int   my_users(t_env *e, char **cmd, int fd)
+int   		my_users(t_env *e, char **cmd, int fd)
 {
   if (tablen(cmd) == 1)
     show_list_users(e, fd);

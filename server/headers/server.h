@@ -128,7 +128,9 @@ void            show_list_commands(t_env *e, int fd);
 void           	send_direct_msg(t_env *e, char **cmd, int fd);
 int    		is_existing_user(char *login, t_env *e, int fd);
 void            show_sender(t_env *e, int fd_sender, int fd_receiver);
-int    is_existing_login(t_env *e, int fd, char *login);
+int    		is_existing_login(t_env *e, int fd, char *login);
+void		add_fd(t_user *u, t_env *e);
+void		print_on_screen(t_node *u);
 
 void		free_user(t_user *u);
 void		free_node(t_node *n);
