@@ -7,7 +7,7 @@
 # define			WAITING         3
 # define			CONNECTED	4
 # define			MAX_FD		255
-# define			BUFF_SIZE	3000
+# define			BUFF_SIZE	1024
 
 # include			<arpa/inet.h>
 # include			<sys/socket.h>

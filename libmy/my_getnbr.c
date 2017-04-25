@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Thu Oct  2 11:07:05 2014 MESRATI Nada
-** Last update Mon Apr 24 18:20:05 2017 BILLAUD Jean
+** Last update Tue Apr 25 19:19:24 2017 BILLAUD Jean
 */
 
 #include <unistd.h>
@@ -15,7 +15,7 @@ void	my_putchar(char c)
   write(1, &c, 1);
 }
 
-void	my_put_nbr(int n)
+/*void	my_put_nbr(int n)
 {
   char	tab[100];
   int	i;
@@ -39,7 +39,7 @@ void	my_put_nbr(int n)
       my_putchar(tab[i]);
       --i;
     }
-}
+    }*/
 
 int	compteur(char *str)
 {
@@ -69,6 +69,8 @@ int	my_getnbr(char *str)
   res = 0;
   while (str[i] != '\0')
     {
+      if ((str[i] >= (':')) || (str[i] <= ('/')))
+	return (-1);
       if (str[i] < ('0'))
 	i = i + 1;
       if ((str[i] >= (':')) || (str[i] < ('+')))
