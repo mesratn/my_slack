@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Fri Apr 21 21:25:51 2017 BILLAUD Jean
-** Last update Sun Apr 23 11:06:54 2017 BILLAUD Jean
+** Last update Tue Apr 25 19:26:59 2017 BILLAUD Jean
 */
 
 #include "../headers/server.h"
@@ -25,8 +25,8 @@ t_env	*create_env(int p)
 
 void	init_channel(t_env *e)
 {
-  int   pos;
-  char *name;
+  int	pos;
+  char	*name;
   
   pos = 1;
    if ((name = malloc(sizeof(char) * 2)) == NULL)

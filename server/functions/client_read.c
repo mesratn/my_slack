@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:18 2017 BILLAUD Jean
-** Last update Sun Apr 23 15:50:16 2017 BILLAUD Jean
+** Last update Tue Apr 25 18:36:59 2017 BILLAUD Jean
 */
 
 #include "../headers/server.h"
@@ -15,7 +15,7 @@ void	client_read(t_env *e, int fd)
   int	r;
   char	buf[BUFF_SIZE];
 
-  r = read(fd, buf, BUFF_SIZE);
+  r = read(fd, buf, BUFF_SIZE - 1);
   if (r > 0)
     {
       buf[r - 1] = '\0';
@@ -31,7 +31,7 @@ int	server_cmd(t_env *e, int fd)
   int	r;
   char	buf[BUFF_SIZE];
 
-  r = read(fd, buf, BUFF_SIZE);
+  r = read(fd, buf, BUFF_SIZE - 1);
   if (r > 0)
     {
       buf[r - 1] = '\0';

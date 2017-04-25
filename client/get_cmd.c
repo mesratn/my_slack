@@ -5,46 +5,102 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Mar 28 17:19:35 2017 MESRATI Nada
-** Last update Mon Apr 24 22:47:58 2017 BILLAUD Jean
+** Last update Tue Apr 25 19:22:30 2017 BILLAUD Jean
 */
 #include "client.h"
 
+t_cmd	g_tab[] =
+  {
+    {"/server", &my_server},
+    {"/quit", &my_quit},
+    {NULL, NULL}
+  };
+
+int	server_cmd()
+{
+  int	r;
+  int   i;
+  char	buf[BUFF_SIZE];
+
+  r = read(0, buf, BUFF_SIZE - 1);
+  if (r > 0)
+    {
+      buf[r - 1] = '\0';
+      i = get_cmd(buf);
+    }
+  return (i);
+}
+  
 /** 
  ** Cette fonction sert à se connecter au serveur avec la commande /server [address]:[port]
  ** Elle fait la vérification de la commande et si le format est bon fait appel à my_connect()
  ** Il faut voir le my_str_to_wordtab dans la lib, il prend en deuxième argument le caractère de séparation
  **/
-int	get_cmd()
+
+int	get_cmd(char *buff)
 {
-  char	buff[BUFF_SIZE];
-  char	**tmp;
-  char	**tmp2;
+  char	**cmd;
   int	i;
   int	r;
 
-  r = 1;
-  while (r)
+  i = -1;
+  r = 0;
+  if (buff[0] != '\0')
     {
-      i = read(0, buff, BUFF_SIZE);
-      if (i > 0)
+      cmd = my_str_to_wordtab(buff, ' ');
+      if (cmd[0] == NULL)
 	{
-	  buff[i] = '\0';
-	  tmp = my_str_to_wordtab(buff, ' ');
-	  if (tablen(tmp) == 2 && my_strcmp(tmp[0], "/server") == 0)
-	    {
-	      tmp2 = my_str_to_wordtab(tmp[1], ':');
-	      if ((i = my_connect(tmp2)) != -1)
-		{
-		  freetab(tmp);
-		  return (i);
-		}
-	    }
-	  else
-	    my_putstr("Usage: /server [address]:[port]\n");
+	  freetab(cmd);
+	  return (-1);
 	}
-      else
-	r = 0;
+      while (g_tab[++i].cmd != NULL
+	     && my_strcmp(cmd[0], g_tab[i].cmd));
+      if (g_tab[i].cmd == NULL)
+	{
+	  freetab(cmd);
+	  return (-1);
+	}
+      r = g_tab[i].serv_cmd(cmd);
     }
-  freetab(tmp);
-  return (0);
+    freetab(cmd);
+    return (r);
+}
+
+
+int    my_server(char **cmd)
+{
+  char 	**tmp;
+  int	i;
+
+  i = 0;
+  if (tablen(cmd) == 2 && my_strcmp(cmd[0], "/server") == 0)
+    {
+      tmp = my_str_to_wordtab(cmd[1], ':');
+      if(tablen(tmp) != 2 || my_getnbr(tmp[0]) == -1
+	 || my_getnbr(tmp[1]) == -1)
+	{
+	  freetab(tmp);
+	  my_putstr("Usage: /server [address]:[port]\n");
+	  return (-1);
+	}
+      if ((i = my_connect(tmp)) != -1)
+	{
+	  freetab(tmp);
+	  return (i);
+	}
+    }
+  else
+    my_putstr("Usage: /server [address]:[port]\n");
+  return (-1);
+}
+
+int	my_quit(char **cmd)
+{
+  if (tablen(cmd) < 2)
+    {
+      my_putstr("salut, à la prochaine\n");
+      return (0);
+    }
+  my_putstr("Usage: /quit\n");
+  return (-1);
 }
