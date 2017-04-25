@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Sat Apr 22 18:06:53 2017 BILLAUD Jean
-** Last update Sat Apr 22 19:07:25 2017 BILLAUD Jean
+** Last update Tue Apr 25 20:05:34 2017 BILLAUD Jean
 */
 
 #include 	"../headers/server.h"
@@ -37,7 +37,7 @@ void		show_list_chan(t_chan *list, int fd)
     }
 }
 
-void    show_list_users(t_env *e, int fd)
+void    	show_list_users(t_env *e, int fd)
 {
   t_user        *tmp;
   int           unknown;

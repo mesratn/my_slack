@@ -5,14 +5,14 @@
 ** Login   <debell_j@etna-alternance.net>
 ** 
 ** Started on  Mon Apr 24 18:48:28 2017 DEBELLEIX Jérémy
-** Last update Mon Apr 24 20:26:23 2017 DEBELLEIX Jérémy
+** Last update Tue Apr 25 20:07:31 2017 BILLAUD Jean
 */
 
 #include        "../headers/server.h"
 
-int   my_nick(t_env *e, char **cmd, int fd)
+int   		my_nick(t_env *e, char **cmd, int fd)
 {
-  t_user  *user;
+  t_user	*user;
 
   user = get_current_user(e->list, fd);
   if (cmd[2])
@@ -31,7 +31,7 @@ int   my_nick(t_env *e, char **cmd, int fd)
   return (0);
 }
 
-int    is_existing_login(t_env *e, int fd, char *login)
+int    		is_existing_login(t_env *e, int fd, char *login)
 {
   t_user        *tmp;
 

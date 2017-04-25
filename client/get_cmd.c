@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Mar 28 17:19:35 2017 MESRATI Nada
-** Last update Tue Apr 25 19:22:30 2017 BILLAUD Jean
+** Last update Tue Apr 25 19:52:56 2017 BILLAUD Jean
 */
 #include "client.h"
 
@@ -67,9 +67,9 @@ int	get_cmd(char *buff)
 }
 
 
-int    my_server(char **cmd)
+int	my_server(char **cmd)
 {
-  char 	**tmp;
+  char	**tmp;
   int	i;
 
   i = 0;

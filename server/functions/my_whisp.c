@@ -5,14 +5,14 @@
 ** Login   <debell_e@etna-alternance.net>
 ** 
 ** Started on  Mon Apr 24 18:43:47 2017 DEBELLEIX Jérémy
-** Last update Mon Apr 24 18:48:16 2017 DEBELLEIX Jérémy
+** Last update Tue Apr 25 20:17:24 2017 BILLAUD Jean
 */
 
 #include        "../headers/server.h"
 
-int   my_whisp(t_env *e, char **cmd, int fd)
+int   		my_whisp(t_env *e, char **cmd, int fd)
 {
-  int isExistingUser;
+  int		isExistingUser;
 
   if (tablen(cmd) < 3)
     my_putstr_fd(fd, "/users : error, too few arguments.\n");
@@ -53,7 +53,7 @@ void            send_direct_msg(t_env *e, char **cmd, int fd)
     }
 }
 
-void            show_sender(t_env *e, int fd_sender, int fd_receiver)
+void       	show_sender(t_env *e, int fd_sender, int fd_receiver)
 {
   t_user        *sender;
 

@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 **
 ** Started on  Fri Apr 21 13:35:57 2017 MESRATI Nada
-** Last update Mon Apr 24 17:37:59 2017 BILLAUD Jean
+** Last update Tue Apr 25 20:13:07 2017 BILLAUD Jean
 */
 
 #include "../headers/server.h"
@@ -19,17 +19,7 @@ int			my_server(t_env *e)
   FD_ZERO(&e->fd_write);
   e->fd_max = 0;
   tmp = e->list;
-  while (tmp != NULL)
-    {
-      if (tmp->type != FD_FREE)
-	{
-	  FD_SET(tmp->fd, &e->fd_read);
-	  FD_SET(tmp->fd, &e->fd_write);
-	  if (tmp->fd > e->fd_max)
-	    e->fd_max = tmp->fd;
-	}
-      tmp = tmp->next;
-    }
+  add_fd(tmp, e);
   FD_SET(0, &e->fd_read);
   if (select(e->fd_max + 1,
 	     &e->fd_read, &e->fd_write, NULL, NULL) == -1)
@@ -46,4 +36,20 @@ int			my_server(t_env *e)
     if(!server_cmd(e, 0))
       return (0);
   return (1);
+}
+
+
+void			add_fd(t_user *tmp, t_env *e)
+{
+  while (tmp != NULL)
+    {
+      if (tmp->type != FD_FREE)
+	{
+	  FD_SET(tmp->fd, &e->fd_read);
+	  FD_SET(tmp->fd, &e->fd_write);
+	  if (tmp->fd > e->fd_max)
+	    e->fd_max = tmp->fd;
+	}
+      tmp = tmp->next;
+    }
 }

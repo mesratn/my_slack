@@ -5,7 +5,7 @@
 ** Login   <billau_j@etna-alternance.net>
 ** 
 ** Started on  Fri Apr 21 21:25:51 2017 BILLAUD Jean
-** Last update Tue Apr 25 19:26:59 2017 BILLAUD Jean
+** Last update Tue Apr 25 20:02:18 2017 BILLAUD Jean
 */
 
 #include "../headers/server.h"
@@ -29,7 +29,7 @@ void	init_channel(t_env *e)
   char	*name;
   
   pos = 1;
-   if ((name = malloc(sizeof(char) * 2)) == NULL)
+   if ((name = malloc(sizeof (char) * 2)) == NULL)
         return ;
     while (pos <= 9)
         {
