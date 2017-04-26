@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Thu Oct  2 11:07:05 2014 MESRATI Nada
-** Last update Tue Apr 25 19:19:24 2017 BILLAUD Jean
+** Last update Wed Apr 26 12:25:42 2017 BILLAUD Jean
 */
 
 #include <unistd.h>
@@ -69,7 +69,7 @@ int	my_getnbr(char *str)
   res = 0;
   while (str[i] != '\0')
     {
-      if ((str[i] >= (':')) || (str[i] <= ('/')))
+      if ((str[i] >= (':')) || (str[i] == ('/')) || (str[i] < ('.')))
 	return (-1);
       if (str[i] < ('0'))
 	i = i + 1;

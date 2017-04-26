@@ -5,7 +5,7 @@
 ** Login   <mesrat_n@etna-alternance.net>
 ** 
 ** Started on  Tue Mar 28 17:19:35 2017 MESRATI Nada
-** Last update Tue Apr 25 19:52:56 2017 BILLAUD Jean
+** Last update Wed Apr 26 12:34:37 2017 BILLAUD Jean
 */
 #include "client.h"
 
@@ -22,6 +22,7 @@ int	server_cmd()
   int   i;
   char	buf[BUFF_SIZE];
 
+  i = 0;
   r = read(0, buf, BUFF_SIZE - 1);
   if (r > 0)
     {
@@ -45,6 +46,7 @@ int	get_cmd(char *buff)
 
   i = -1;
   r = 0;
+  cmd = NULL;
   if (buff[0] != '\0')
     {
       cmd = my_str_to_wordtab(buff, ' ');
@@ -53,16 +55,15 @@ int	get_cmd(char *buff)
 	  freetab(cmd);
 	  return (-1);
 	}
-      while (g_tab[++i].cmd != NULL
-	     && my_strcmp(cmd[0], g_tab[i].cmd));
+      while (g_tab[++i].cmd != NULL && my_strcmp(cmd[0], g_tab[i].cmd));
       if (g_tab[i].cmd == NULL)
 	{
 	  freetab(cmd);
 	  return (-1);
 	}
       r = g_tab[i].serv_cmd(cmd);
+      freetab(cmd);
     }
-    freetab(cmd);
     return (r);
 }
 
@@ -84,10 +85,7 @@ int	my_server(char **cmd)
 	  return (-1);
 	}
       if ((i = my_connect(tmp)) != -1)
-	{
-	  freetab(tmp);
-	  return (i);
-	}
+	return (i);
     }
   else
     my_putstr("Usage: /server [address]:[port]\n");
